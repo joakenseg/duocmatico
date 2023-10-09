@@ -2,7 +2,7 @@
   <v-app>
     <the-header></the-header>
     <dm-section-selector-nav></dm-section-selector-nav>
-    <v-main>
+    <v-main class="bg-amber-lighten-5">
       <router-view></router-view>
     </v-main>
   </v-app>
@@ -38,11 +38,6 @@ export default {
 </script>
 
 <style>
-/* Set de background color in all views */
-.my-app {
-  background-color: #FFF7EA;
-}
-
 /* Set the style for the entire scrollbar */
 ::-webkit-scrollbar {
   width: 5px;

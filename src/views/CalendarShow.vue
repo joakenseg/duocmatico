@@ -2,25 +2,11 @@
   <v-container>
     <h4 class="text-h4 mb-2">{{ selectedCalendar.name }}</h4>
 
-    <v-card class="rounded-xl elevation-0" variant="outlined" height="70vh">
-      <vue-cal
-        hide-view-selector
-        hide-title-bar
-        :disable-views="['years', 'year', 'month', 'day']"
-        :hide-weekdays="[7]"
-        :time-from="8 * 60"
-        :time-step="30"
-        locale="es"
-        :events="calendarEvents"
-      >
+    <v-card height="534px" class="bg-white" variant="outlined">
+      <vue-cal hide-view-selector hide-title-bar :disable-views="['years', 'year', 'month', 'day']" :hide-weekdays="[7]"
+        :time-from="8 * 60" :time-step="30" locale="es" :events="calendarEvents">
         <template v-slot:event="{ event }">
-          <v-card
-            class="rounded-lg"
-            variant="tonal"
-            height="100%"
-            :color="event.color"
-            @click="openSectionInformation(event.sectionId)"
-          >
+          <v-card class="rounded-lg" height="100%" :color="event.color" @click="openSectionInformation(event.sectionId)">
             <v-card-title class="text-capitalize text-body-2">
               {{ event.title }}
             </v-card-title>
@@ -35,12 +21,7 @@
       </vue-cal>
     </v-card>
     <br />
-    <v-btn
-      variant="outlined"
-      class="rounded-pill text-capitalize"
-      color="primary"
-      @click="openSectionsSidebar()"
-    >
+    <v-btn variant="flat" class="text-white text-capitalize" color="deep-orange-lighten-2" @click="openSectionsSidebar()">
       Agregar secciones
     </v-btn>
 

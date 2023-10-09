@@ -3,8 +3,7 @@
     <h4 class="text-h4 mb-2">Mis calendarios</h4>
     <v-row>
       <v-col cols="12" md="4">
-        <v-card @click="newCalendarForm = true" variant="flat" height="150px" class="rounded-xl"
-          style="border: 4px dashed lightgray; background-color: transparent">
+        <v-card @click="newCalendarForm = true" class="text-white" color="deep-orange-lighten-2" height="150px">
           <v-container class="text-center mt-4">
             <v-icon size="7vh">mdi-plus</v-icon>
             <h3>Nuevo calendario</h3>
@@ -14,7 +13,7 @@
     </v-row>
     <v-row>
       <v-col cols="12" md="4" v-for="(calendar, index) in localCalendars" :key="`calendar-${index}`">
-        <v-card height="150px" class="rounded-xl elevation-4" variant="outlined"
+        <v-card height="150px" color="orange-lighten-2"
           @click="$router.push({ name: 'calendars.show', params: { id: index } })">
           <v-card-title class="ml-2">{{ calendar.name }}</v-card-title>
           <v-card-subtitle class="ml-2 my-n2 text-capitalize">

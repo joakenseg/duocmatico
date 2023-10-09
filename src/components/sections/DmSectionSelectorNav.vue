@@ -1,6 +1,5 @@
 <template>
-  <v-navigation-drawer app floating width="450" class="pl-4 pb-4" style="background-color: #FFF7EA"
-    :model-value="sectionsSidebar">
+  <v-navigation-drawer app floating width="450" class="pl-4 pb-4 bg-amber-lighten-5" :model-value="sectionsSidebar">
     <template v-slot:prepend>
       <v-chip size="x-large" style="width: 100%" variant="outlined" class="bg-white mt-3">
         <v-text-field variant="plain" placeholder="Buscar sección" v-model="search"></v-text-field>
@@ -8,7 +7,7 @@
     </template>
 
     <template v-slot:append>
-      <v-btn block variant="outlined" class="rounded-pill" @click="toggleSectionsSidebar">
+      <v-btn block variant="flat" class="text-white" color="deep-orange-lighten-2" @click="toggleSectionsSidebar">
         Finalizar
       </v-btn>
     </template>
@@ -28,7 +27,7 @@
         </v-breadcrumbs-item>
       </div>
     </v-breadcrumbs>
-    <v-card height="90%" class="rounded-xl bg-white" variant="outlined">
+    <v-card height="90%" class="bg-white" variant="outlined">
       <v-divider></v-divider>
       <!-- Needs to set styles to force scrollbar -->
       <v-window v-model="step" style="height: 90%; overflow: auto">

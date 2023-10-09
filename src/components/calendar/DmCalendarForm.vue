@@ -1,16 +1,14 @@
 <template>
-  <v-card class="rounded-xl" title="Nuevo Calendario">
+  <v-card title="Nuevo Calendario" class="bg-amber-lighten-5">
     <v-card-text>
       <v-form ref="form">
-        <v-text-field v-model="name" filled variant="outlined" label="Nombre del calendario"
-          bg-color="white"></v-text-field>
-        <v-autocomplete v-model="cargaForm" :items="cargasAcademicas" label="Carga academica" variant="outlined"
+        <v-text-field v-model="name" label="Nombre del calendario" bg-color="white"></v-text-field>
+        <v-autocomplete v-model="cargaForm" :items="cargasAcademicas" label="Carga academica"
           bg-color="white"></v-autocomplete>
-        <v-autocomplete v-model="careerForm" :items="carreras" label="Carrera" variant="outlined"
-          bg-color="white"></v-autocomplete>
+        <v-autocomplete v-model="careerForm" :items="carreras" label="Carrera" bg-color="white"></v-autocomplete>
       </v-form>
       <v-card-actions>
-        <v-btn :disabled="isDisabled" block color="green-accent-1" variant="flat" class="rounded-pill text-white"
+        <v-btn :disabled="!isDisabled" block color="deep-orange-lighten-2" variant="flat" class="text-white t"
           @click="createCalendar">
           Empieza a armar tu horario!
         </v-btn>
