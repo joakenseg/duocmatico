@@ -1,5 +1,5 @@
 <template>
-  <v-container class>
+  <v-container style="max-width: 90rem">
     <h4 class="text-h4 mb-2">Mis calendarios</h4>
     <v-card class="my-4" :width="isMobile ? '100%' : '480'">
       <v-text-field
@@ -74,6 +74,8 @@ import DmCalendarForm from "../components/calendar/DmCalendarForm.vue";
 import DmDeleteCalendar from "../components/calendar/DmDeleteCalendar.vue";
 import DmEditCalendarName from "../components/calendar/DmEditCalendarName.vue";
 import DmShareCalendar from "../components/calendar/DmShareCalendar.vue";
+import { CALENDAR_SOURCES } from "../helpers/constants";
+import { auth } from "../config/firebase";
 
 export default {
   name: "CalendarIndexView",
@@ -97,7 +99,6 @@ export default {
 
   computed: {
     ...mapState("calendars", ["localCalendars", "apiCalendars", "calendar"]),
-    ...mapState("auth", ["token"]),
 
     isMobile() {
       const { mobile, smAndDown } = useDisplay();
@@ -127,10 +128,14 @@ export default {
   methods: {
     ...mapMutations("calendars", ["setCalendar"]),
     getCalendars() {
-      this.$store.dispatch("calendars/getLocalCalendars");
+      this.$store.dispatch("calendars/getCalendars", {
+        source: CALENDAR_SOURCES.LOCAL,
+      });
 
-      if (!this.token) return;
-      this.$store.dispatch("calendars/getApiCalendars");
+      if (!auth.currentUser) return;
+      this.$store.dispatch("calendars/getCalendars", {
+        source: CALENDAR_SOURCES.API,
+      });
     },
 
     openEditCalendarNameCard(calendar) {
@@ -162,12 +167,12 @@ export default {
 
     nameUpdated() {
       this.editCalendarName = false;
-      this.$store.dispatch("calendars/getApiCalendars");
+      this.getCalendars();
     },
 
     handleCreated() {
       this.newCalendarForm = false;
-      this.$store.dispatch("calendars/getApiCalendars");
+      this.getCalendars();
     },
   },
 
